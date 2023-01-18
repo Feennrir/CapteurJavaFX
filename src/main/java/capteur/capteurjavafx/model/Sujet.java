@@ -8,8 +8,12 @@ public abstract class Sujet {
 
     private List<Observateur> observers = new ArrayList<Observateur>();
 
-    public void attach(Observateur observer){
-        observers.add(observer);
+    public void addObserver(Observateur o) {
+        observers.add(o);
+    }
+
+    public void removeObserver(Observateur o) {
+        observers.remove(o);
     }
 
     public void notifier() {

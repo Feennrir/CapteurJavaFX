@@ -5,4 +5,6 @@ module capteur.capteurjavafx {
 
     opens capteur.capteurjavafx to javafx.fxml;
     exports capteur.capteurjavafx;
+    exports capteur.capteurjavafx.launch;
+    opens capteur.capteurjavafx.launch to javafx.fxml;
 }

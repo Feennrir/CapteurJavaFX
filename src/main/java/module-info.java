@@ -3,8 +3,10 @@ module capteur.capteurjavafx {
     requires javafx.fxml;
 
 
-    opens capteur.capteurjavafx to javafx.fxml;
-    exports capteur.capteurjavafx;
-    exports capteur.capteurjavafx.launch;
-    opens capteur.capteurjavafx.launch to javafx.fxml;
+    exports launch;
+    opens launch to javafx.fxml;
+    exports view;
+    opens view to javafx.fxml;
+    exports model;
+    opens model to javafx.fxml;
 }

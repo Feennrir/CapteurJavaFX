@@ -1,7 +1,7 @@
-package capteur.capteurjavafx.view;
+package view;
 
-import capteur.capteurjavafx.model.Capteur;
-import capteur.capteurjavafx.model.Observateur;
+import model.Capteur;
+import model.Observateur;
 
 public class SaisisseurTemperature implements Observateur {
 
@@ -19,6 +19,6 @@ public class SaisisseurTemperature implements Observateur {
 
     @Override
     public void update() {
-        System.out.println("["+this.nom+"] "+this.capteur.getNom() + " : " + this.capteur.getTemperature() + " °C");
+        System.out.println("["+this.nom+"] "+this.capteur.getName() + " : " + this.capteur.getValue() + " °C");
     }
 }

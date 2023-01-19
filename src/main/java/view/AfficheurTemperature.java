@@ -1,8 +1,9 @@
-package capteur.capteurjavafx.view;
+package view;
 
-import capteur.capteurjavafx.model.Capteur;
+import model.Capteur;
+import model.Observateur;
 
-public class AfficheurTemperature {
+public class AfficheurTemperature implements Observateur {
 
         private String nom;
         private Capteur capteur;

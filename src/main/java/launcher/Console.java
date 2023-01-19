@@ -1,12 +1,11 @@
-package capteur.capteurjavafx.launcher;
+package launcher;
 
 
-import capteur.capteurjavafx.model.Capteur;
-import capteur.capteurjavafx.model.GenerateurAleatoire;
-import capteur.capteurjavafx.view.AfficheurTemperature;
-import capteur.capteurjavafx.view.SaisisseurTemperature;
+import model.Capteur;
+import model.GenerateurAleatoire;
+import view.AfficheurTemperature;
+import view.SaisisseurTemperature;
 
-import java.util.Random;
 
 public class Console {
     public static void main(String[] args) {
@@ -18,6 +17,6 @@ public class Console {
         C001.addObserver(a1);
         C001.addObserver(a2);
         C001.addObserver(s1);
-        s1.sasir(C001.getStrategy().genereTemperature());
+        s1.sasir(C001.getStrategy().genererValeur());
     }
 }

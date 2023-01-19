@@ -1,4 +1,4 @@
-package capteur.capteurjavafx.model;
+package model;
 
 import java.util.Random;
 

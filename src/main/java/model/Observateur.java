@@ -1,4 +1,4 @@
-package capteur.capteurjavafx.model;
+package model;
 
 public interface Observateur {
     void update();

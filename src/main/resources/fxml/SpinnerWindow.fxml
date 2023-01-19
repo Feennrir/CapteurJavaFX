@@ -4,7 +4,6 @@
         <?import javafx.scene.control.*?>
         <?import javafx.scene.layout.*?>
 
-        <?import javafx.scene.control.SpinnerValueFactory.DoubleSpinnerValueFactory?>
 <fx:root fx:id="imageWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="223.0" prefWidth="443.0" type="GridPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

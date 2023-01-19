@@ -20,7 +20,11 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <ImageView fitHeight="202.0" fitWidth="228.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+        <ImageView fx:id="imageView" fitHeight="202.0" fitWidth="228.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" >
+            <image>
+                <Image url="@../images/cloudy.jpg" />
+            </image>
+        </ImageView>
         <SplitPane prefHeight="200.0" prefWidth="200.0">
             <items>
                 <GridPane prefWidth="119.0">
@@ -41,7 +45,7 @@
                             <GridPane.margin>
                                 <Insets left="5.0" />
                             </GridPane.margin></Label>
-                        <Label fx:id="temperature" text="Label" GridPane.columnIndex="1">
+                        <Label fx:id="labelTemperature" text="Label" GridPane.columnIndex="1">
                             <GridPane.margin>
                                 <Insets left="5.0" />
                             </GridPane.margin></Label>

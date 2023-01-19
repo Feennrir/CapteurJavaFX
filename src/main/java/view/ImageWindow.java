@@ -1,5 +1,7 @@
 package view;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.Capteur;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +12,8 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class ImageWindow extends Visu {
@@ -19,6 +23,9 @@ public class ImageWindow extends Visu {
 
     @FXML
     private Label labelTemperature;
+
+    @FXML
+    private ImageView imageView;
 
     public ImageWindow(Capteur capteur) throws IOException {
         this.capteur = capteur;
@@ -42,5 +49,18 @@ public class ImageWindow extends Visu {
     @Override
     public void update() {
         labelTemperature.textProperty().bindBidirectional(this.capteur.getValue(), new NumberStringConverter());
+
+        this.capteur.getValue().addListener((observable, oldvalue, newvalue) -> {
+            try {
+                if((Double) newvalue < 0) {
+                    imageView.setImage(new Image(new FileInputStream("images/olaf.png")));
+                } else if((Double) newvalue > 22) {
+                    imageView.setImage(new Image(new FileInputStream("/images/cloudy.jpg")));
+                } else {
+                    imageView.setImage(new Image(new FileInputStream("/resources/images/sun.jpg")));
+                }
+            } catch (FileNotFoundException ignored) {}
+        });
+
     }
 }

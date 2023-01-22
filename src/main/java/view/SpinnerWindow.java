@@ -1,44 +1,42 @@
 package view;
 
-import model.Capteur;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Spinner;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.stage.Stage;
+import model.Visualisation;
+import model.Capteur;
 
-import java.io.IOException;
-
-public class SpinnerWindow extends Visu{
+public class SpinnerWindow extends Visualisation {
 
     @FXML
-    private Spinner spinner;
-    protected Capteur capteur;
-    private GridPane gridPane;
+    private Slider slider;
 
-    public SpinnerWindow(Capteur capteur) throws IOException {
-        this.capteur = capteur;
-        Stage stage = new Stage();
-        gridPane = new GridPane();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SpinnerWindow.fxml"));
-        loader.setRoot(this.gridPane);
-        loader.setController(this);
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Spinner");
-        stage.show();
+    @FXML
+    private Label temperature;
+
+    public SpinnerWindow(Capteur c) {
+        super(c);
+    }
+
+    public void initialize(){
+        super.initialize();
     }
 
     @FXML
-    public void initialize() {
-        spinner.getValueFactory().valueProperty().bindBidirectional(this.capteur.getValue());
+    private void changeTemperature(){
+        Capteur.setTemperature(slider.getValue());
     }
 
     @Override
     public void update() {
-        spinner.getValueFactory().valueProperty().bindBidirectional(this.capteur.getValue());
+        slider.setValue(Capteur.getTemperature());
+        temperature.setText(String.valueOf(Capteur.getTemperature()));
+    }
+
+    @FXML
+    public void Close(){
+        Stage stage = (Stage) slider.getScene().getWindow();
+        stage.close();
     }
 }

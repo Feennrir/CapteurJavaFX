@@ -5,70 +5,44 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
 
-public class Capteur extends Sujet implements Runnable {
+public abstract class Capteur extends Observable implements Runnable{
+    private final int id;
+    public static int currentId = 1;
+    private String nom;
+    private Thread thread;
+    private final DoubleProperty temperature;
 
-    private int id;
-    private static int currentId = 0;
-    private String name;
-    private DoubleProperty value;
-    private GenerateurStrategy strategy;
-
-    public Capteur(String name, GenerateurStrategy strategy) {
-        this.id = currentId;
-        currentId++;
-        this.name = name;
-        this.value = new SimpleDoubleProperty(strategy.genererValeur());
-        this.strategy = strategy;
+    public Capteur(String nom){
+        this.id = currentId++;
+        this.setNom(nom);
+        this.temperature = new SimpleDoubleProperty(0);
     }
 
-    public int getId() {
-        return id;
+    public void setTemperature(double temperature) {
+        this.temperature.set(temperature);
+        notifier();
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public double getTemperature() {
+        return this.temperature.get();
     }
 
-    public String getName() {
-        return name;
+    public DoubleProperty getTemperatureProperty() {
+        return this.temperature;
+    }
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getNom() {
+        return nom;
     }
-
-    public DoubleProperty getValue() {
-        return value;
-    }
-
-    public void setValue(double value) {
-        this.value = new SimpleDoubleProperty(value);
-        this.notifier();
-    }
-
-    public GenerateurStrategy getStrategy() {
-        return strategy;
-    }
-
-    public void setStrategy(GenerateurStrategy strategy) {
-        this.strategy = strategy;
-    }
-
-
 
     @Override
-    public void run() {
-//        while (true) {
-//            setValue(GenerateurStrategy.genererValeur());
-//            try {
-//                Thread.sleep(1000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//            Platform.runLater(() -> {
-//                this.value = Math.random();
-//                System.out.println("Capteur " + this.name + " : " + this.value);
-//            });
-//        }
+    public abstract void run();
+
+    @Override
+    public String toString() {
+        return this.nom + ' ' + this.id;
     }
 }

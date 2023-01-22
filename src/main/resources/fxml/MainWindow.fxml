@@ -1,20 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="132.0" prefWidth="131.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainWindow">
-    <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    </columnConstraints>
-    <rowConstraints>
-        <RowConstraints maxHeight="132.4" minHeight="10.0" prefHeight="89.4" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="128.4" minHeight="0.0" prefHeight="98.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="266.80000000000007" minHeight="10.0" prefHeight="93.19999999999999" vgrow="SOMETIMES" />
-    </rowConstraints>
-    <children>
-        <Button fx:id="buttonImage" mnemonicParsing="false" onAction="#clickButtonImage" text="Image" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-        <Button fx:id="buttonFermerPage" mnemonicParsing="false" onAction="#clickButtonFermerPage" text="Fermer" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-        <Button fx:id="buttonSpinner" mnemonicParsing="false" onAction="#clickButtonSpinner" text="Spinner" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-    </children>
-</GridPane>
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainWindow">
+    <center>
+      <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="471.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="205.0" prefWidth="471.0">
+               <children>
+                      <CheckBox fx:id="isCheck" alignment="CENTER" onAction="#IsCapteurComposite" prefHeight="51.0" prefWidth="118.0" text="Composite ?" />
+               </children>
+            </HBox>
+                <ComboBox fx:id="strategyBox" prefHeight="46.0" prefWidth="179.0" promptText="Choix de la génération" />
+            <HBox alignment="CENTER" prefHeight="310.0" prefWidth="471.0">
+               <children>
+                      <Button fx:id="slider" mnemonicParsing="false" onAction="#Slider" prefHeight="24.0" prefWidth="114.0" text="Slider" />
+                      <Button fx:id="image" mnemonicParsing="false" onAction="#Image" prefHeight="24.0" prefWidth="106.0" text="Image" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+              <Button fx:id="newCapteur" mnemonicParsing="false" onAction="#Add" prefHeight="26.0" prefWidth="150.0" text="Nouveau Capteur" />
+         </children>
+      </VBox>
+
+    </center>
+    <left>
+        <TreeView fx:id="capteurTreeView" onMouseClicked="#ClickOnOneCapteur" prefHeight="400.0" prefWidth="197.0" BorderPane.alignment="CENTER" />
+    </left>
+
+</BorderPane>
